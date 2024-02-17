@@ -1,0 +1,2 @@
+parsing :
+	- ft_strtok #man strtok "char *strtok(char *restrict str, const char *restrict sep);"
