@@ -31,6 +31,9 @@ int ft_atoi(char *str)
 {
 	int sign = 1;
 	long res = 0;
+
+	if (!str || !*str)
+		ft_error();
 	if (*str == '-' || *str == '+')
 		if (*str++ == '-')
 			sign = -1;
@@ -46,3 +49,16 @@ int ft_atoi(char *str)
 		ft_error();
 	return (res*sign);
 }
+ bool is_sorted(t_stack **stack)
+ {
+	t_stack *head;
+
+	if (!stack || !*stack)
+		return(0);
+	head = *stack;
+	while (head->next && head->index < head->next->index)
+		head = head->next;
+	if (!head->next || head->index == s_size(0,FLAG_A)+1)
+		return(1);
+	return(0);
+ }

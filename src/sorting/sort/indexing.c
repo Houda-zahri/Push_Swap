@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzahri <hzahri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 14:25:34 by hzahri            #+#    #+#             */
-/*   Updated: 2024/02/20 14:25:48 by hzahri           ###   ########.fr       */
+/*   Created: 2024/02/18 22:22:19 by hzahri            #+#    #+#             */
+/*   Updated: 2024/02/20 16:19:33 by hzahri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *parser(int ac, char **av)
+void indexing(t_stack **stack)
 {
-	int i = -1;
-	t_stack *stack = NULL;
-	char *tok;
-
-	while (++i < ac)
+	t_stack *head;
+	t_stack *tmp;
+	
+	if (!stack || !*stack)
+		return;
+	tmp = *stack;
+	while (tmp)
 	{
-		tok = ft_strtok(av[i]);
-		if (!tok)
-			ft_error();
-		while (tok)
+		head = tmp->next;
+		while (head)
 		{
-			add_back(&stack, create(ft_atoi(tok)));
-			tok = ft_strtok(NULL);
+			if (tmp->number > head->number)
+				tmp->index++;
+			else
+				head->index++;
+			head = head->next;
 		}
+		tmp = tmp->next;
 	}
-	return(stack);
+	
 }
