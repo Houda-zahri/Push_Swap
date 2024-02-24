@@ -6,18 +6,18 @@
 /*   By: hzahri <hzahri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:59:29 by hzahri            #+#    #+#             */
-/*   Updated: 2024/02/20 16:19:07 by hzahri           ###   ########.fr       */
+/*   Updated: 2024/02/23 21:56:22 by hzahri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int max_stack(t_stack *stack)
+int	max_stack(t_stack *stack)
 {
-	int max;
-	
+	int	max;
+
 	if (!stack)
-		return(0);
+		return (0);
 	max = (stack)->number;
 	while (stack)
 	{
@@ -27,13 +27,14 @@ int max_stack(t_stack *stack)
 	}
 	return (max);
 }
-void sort_3(t_stack **stack_a)
+
+void	sort_3(t_stack **stack_a)
 {
-	int max;
+	int	max;
 
 	if (!stack_a || !*stack_a)
-		return;
-	if(s_size(0, FLAG_A) == 3)
+		return ;
+	if (s_size(0, FLAG_A) == 3)
 	{
 		max = max_stack(*stack_a);
 		((max == (*stack_a)->number) && (ra(stack_a), 0));

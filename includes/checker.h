@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzahri <hzahri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 11:06:22 by hzahri            #+#    #+#             */
-/*   Updated: 2024/02/24 12:46:57 by hzahri           ###   ########.fr       */
+/*   Created: 2024/02/23 11:05:33 by hzahri            #+#    #+#             */
+/*   Updated: 2024/02/24 11:22:00 by hzahri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include <stdio.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <libc.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif 
+
+char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *src);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+bool	find_nl(const char *s);
 typedef enum s_falgs
 {
 	FLAG_A,
@@ -49,23 +59,11 @@ void	push_back(t_stack **stack, t_stack *new);
 t_stack	*parser(int ac, char **av);
 void	push_front(t_stack **stack, t_stack *new);
 int		s_size(char mode, t_flags flag);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	sa(t_stack **stack);
-void	sb(t_stack **stack);
-void	ss(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	sort_3(t_stack **stack_a);
-void	sort_5(t_stack **stack_a, t_stack **stack_b);
 void	indexing(t_stack **stack);
-void	level_1(t_stack **stack_a, t_stack **stack_b);
-bool	search_prev(t_stack **stack_a, t_stack **stack_b);
-void	level_2(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **src, t_stack **dest);
+void	swap(t_stack **stack);
+void	rotate(t_stack **stack);
+void	revrotate(t_stack **stack);
 void	*gcollector(size_t size, int mode);
 
-#endif 
+#endif

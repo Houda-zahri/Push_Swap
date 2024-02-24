@@ -1,37 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_parsing.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hzahri <hzahri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 11:11:32 by hzahri            #+#    #+#             */
+/*   Updated: 2024/02/24 11:20:06 by hzahri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-char *ft_strtok(char *str)
+char	*ft_strtok(char *str)
 {
-	static char *hold = NULL;
-	char *token;
+	static char	*hold;
+	char		*token;
 
 	if (str)
 		hold = str;
 	if (!hold || !*hold)
-		return(NULL);
+		return (NULL);
 	while (*hold && (*hold == ' ' || *hold == '\t'))
 		hold++;
 	if (!*hold)
-		return(NULL);
+		return (NULL);
 	token = hold;
 	while (*hold && *hold != 32 && *hold != '\t')
 		hold++;
-	if(*hold)
+	if (*hold)
 		*hold++ = 0;
-	return(token);
+	return (token);
 }
 
-void ft_error()
+void	ft_error(void)
 {
+	gcollector(0, 0);
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	int sign = 1;
-	long res = 0;
+	int		sign;
+	long	res;
 
+	sign = 1;
+	res = 0;
 	if (!str || !*str)
 		ft_error();
 	if (*str == '-' || *str == '+')
@@ -47,18 +62,18 @@ int ft_atoi(char *str)
 	}
 	if (*str)
 		ft_error();
-	return (res*sign);
+	return (res * sign);
 }
- bool is_sorted(t_stack **stack)
- {
-	t_stack *head;
 
-	if (!stack || !*stack)
-		return(0);
-	head = *stack;
-	while (head->next && head->index < head->next->index)
-		head = head->next;
-	if (!head->next || head->index == s_size(0,FLAG_A)+1)
-		return(1);
-	return(0);
- }
+bool	is_sorted(t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if (stack->number > stack->next->number)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}

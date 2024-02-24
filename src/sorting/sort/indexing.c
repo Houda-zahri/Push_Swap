@@ -6,19 +6,19 @@
 /*   By: hzahri <hzahri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 22:22:19 by hzahri            #+#    #+#             */
-/*   Updated: 2024/02/20 16:19:33 by hzahri           ###   ########.fr       */
+/*   Updated: 2024/02/23 21:55:42 by hzahri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void indexing(t_stack **stack)
+void	indexing(t_stack **stack)
 {
-	t_stack *head;
-	t_stack *tmp;
-	
+	t_stack	*head;
+	t_stack	*tmp;
+
 	if (!stack || !*stack)
-		return;
+		return ;
 	tmp = *stack;
 	while (tmp)
 	{
@@ -33,5 +33,4 @@ void indexing(t_stack **stack)
 		}
 		tmp = tmp->next;
 	}
-	
 }
